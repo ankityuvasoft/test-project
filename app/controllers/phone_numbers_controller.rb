@@ -1,4 +1,7 @@
 class PhoneNumbersController < ApplicationController
+  def index
+    
+  end
 	def new
   @phone_number = PhoneNumber.new
 	end
