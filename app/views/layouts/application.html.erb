@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <%= include_sync_config %>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css", media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+  </head>
+
+  <body>
+  <div class="container">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <% if user_signed_in? %>
+      Signed in as <%= current_user.email %><br/>
+      <%= link_to "Logout", destroy_user_session_path, :method => :delete %> |
+      <%= link_to "Edit profile", edit_user_registration_path %>
+    <% else %>
+      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-default" %>|| 
+      <%= link_to "Sign in", new_user_session_path %>
+    <% end %>
+    <div class="container">
+    <%= yield %>
+  </body>
+  </div>
+</html>
